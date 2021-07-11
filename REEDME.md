@@ -18,8 +18,8 @@ In this project the disaster response messages are a collection of text messages
 Here, the pipeline was created using the Scikit-learn ML library for python. From Scikit-learn liberary a pipeline module was imported, and three modules were applied to build a ML pipeline: 
 ```
 1) Count Vectorization (Vect): convert a collection of text documents to a matrix of token counts 
-2) Term-frequency times inverse-document-frequency (TfidfTransformer): transform a count matrix to a normalized tfidf representation. 
-3) Multioutput and Multiclass (MultiOutputClassifier): implements multioutput regression and classification. 
+2) Term-frequency times inverse-document-frequency (TfidfTransformer): transform a count matrix to a normalized tfidf representation 
+3) Multioutput and Multiclass (MultiOutputClassifier): implements multioutput regression and classification 
 ```
 The disaster message and category data then divided into test (`0.3`) and train (`0.7`) dataset. The train and test data then fitted into a ML pipeline. The test data fitted in the pipeline then used to test the ML model with classification metrics (Accuracy, F1, Recall, and Precision scores) module from Scikit-learn liberary. The classification metrics shows the ML model performs very well in all of the four scores. Yet, further the model was improved by adding more classifier estimators. After improving the test data from the model then the predicted data was exported as a Pickle file in order to use it in Flask web app development.
 
