@@ -18,6 +18,14 @@ import pickle
 app = Flask(__name__)
    
 def tokenize(text):
+   """
+   Tokenize: 
+      separates the string or text into words and punctuation
+   Load data: 
+      load SQLite database for DisasterResponseMessages
+   Load model data:
+      load model data of Pickle (.pkl) format
+   """
     tokens = word_tokenize(text)
     lemmatizer = WordNetLemmatizer()
 
@@ -40,6 +48,15 @@ model = load("../models/classifier.pkl").set_params(n_jobs=1)
 @app.route('/index')
 
 def index():
+   """
+   Creating graphs using Plotly and render it to the web
+   Input:
+      categories data
+      genre data
+      multilabel data
+   Output: 
+      Bar graph
+   """
     
     # extract data needed for visuals
     # TODO: Below is an example - modify to extract data for your own visuals
@@ -133,6 +150,9 @@ def index():
 @app.route('/go')
 
 def go():
+   """
+   Render the model output into a web named go.html
+   """
     # save user input in query
     query = request.args.get('query', '') 
 
