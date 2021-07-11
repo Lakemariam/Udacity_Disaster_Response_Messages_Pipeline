@@ -36,7 +36,9 @@ The three basic steps to build the Disaster Response Messages web app are:
 * Exports the final model as a pickle file
 ```
 3. Flask Web App
-Flask web app platform is an API for python that lets developers build a web-application. The disaster response message was analyzed in EPL pipeline, ML pipeline, and then the interactive web-app deployed in Flask. The interactive figures were created using plotly liberary.
+Flask web app platform is an API for python that lets developers build a web-application. 
+The disaster response message was analyzed in EPL pipeline, ML pipeline, and then the interactive web-app deployed in Flask. 
+The interactive figures were created using plotly liberary.
 ```
 The following three figures represents a visualization of Distribution of Message Genres, Distribution of Message Categories, and Number of messages for each label.
 
