@@ -67,6 +67,9 @@ def load_data(database_filepath):
     return X, Y, category_names
 
 def tokenize(text):
+    """
+    Tokenize: separates the string or text into words and punctuation
+    """
     # normalize text
     url_regex = 'http[s]?://(?:[a-zA-Z]|[0-9]|[$-_@.&+]|[!*\(\),]|(?:%[0-9a-fA-F][0-9a-fA-F]))+'
     detected_urls = re.findall(url_regex, text)
@@ -87,6 +90,13 @@ def tokenize(text):
     return clean_tokens
 
 def build_model():
+    """
+    Pipeline: automate the workflow of ML model
+        Vect: convert a collection of text documents to a matrix of token counts 
+        Tfidf: transform a count matrix to a normalized tfidf representation
+        clf: implements multioutput regression and classification
+    GridSearchCV: search parametrs value for an estimator 
+    """
     # create a pipeline 
     pipeline = Pipeline([
                     ('vect', CountVectorizer(tokenizer=tokenize)),
@@ -103,7 +113,13 @@ def build_model():
     return clf 
 
 def evaluate_model(model, X_test, Y_test, category_names):
-    
+    """
+    evaluates model with classification metrics
+    Input: 
+        X_test, Y_test, Y_pred_test
+    Output:
+        classification metrics (Recall, F1, Accuracy, and Precision Scores)
+    """
    # Predict Y_test using X_test with a model pipeline
    Y_pred_test = model.predict(X_test)
    
@@ -127,6 +143,15 @@ def save_model(model, model_filepath):
         joblib.dump(model, file)
 
 def main():
+    """
+    General steps of ML pipeline model building:
+    - loading .csv file
+    - split the data into train and test data
+    - building a ML model 
+    - training the ML model
+    - evaluating or testing the model
+    - saving model     
+    """
     if len(sys.argv) == 3:
         database_filepath, model_filepath = sys.argv[1:]
         print('Loading data...\n    DATABASE: {}'.format(database_filepath))
@@ -151,7 +176,7 @@ def main():
         print('Please provide the filepath of the disaster messages database '\
               'as the first argument and the filepath of the pickle file to '\
               'save the model to as the second argument. \n\nExample: python '\
-              'train_classifier.py ../data/DisasterResponse.db classifier.pkl')
+              'train_classifier.py ../data/DisasterResponseMessages.db classifier.pkl')
 
 if __name__ == '__main__':
     main()
